@@ -47,7 +47,6 @@ main {
   background-color: var(--black);
 }
 
-/* .card-header {} */
 .card-figure {
   width: 100%;
   overflow: hidden;
@@ -81,6 +80,7 @@ main {
 }
 
 .card-title {
+  font-size: 24px;
   font-weight: 800;
   color: var(--black);
   cursor: pointer;
