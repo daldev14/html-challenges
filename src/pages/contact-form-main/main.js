@@ -42,7 +42,7 @@ $form.addEventListener('submit', (event) => {
 
   setTimeout(() => {
     $alertCard.classList.remove('show-alert')
-  }, 4000)
+  }, 5000)
 })
 
 function ToggleEnabledForm(form) {
