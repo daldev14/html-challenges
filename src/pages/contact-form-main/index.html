@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../assets/favicon-32x32.png"
+    />
+
+    <title>Contact Form</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- styles -->
+    <link rel="stylesheet" href="../../global.css" />
+    <link rel="stylesheet" href="./style.css" />
+
+    <script src="./main.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="alert">
+        <div class="alert-wraper">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="21"
+            fill="none"
+            viewBox="0 0 20 21"
+          >
+            <path
+              fill="#fff"
+              d="M14.28 7.72a.748.748 0 0 1 0 1.06l-5.25 5.25a.748.748 0 0 1-1.06 0l-2.25-2.25a.75.75 0 1 1 1.06-1.06l1.72 1.72 4.72-4.72a.75.75 0 0 1 1.06 0Zm5.47 2.78A9.75 9.75 0 1 1 10 .75a9.76 9.76 0 0 1 9.75 9.75Zm-1.5 0A8.25 8.25 0 1 0 10 18.75a8.26 8.26 0 0 0 8.25-8.25Z"
+            />
+          </svg>
+          <p class="alert-title">Message Sent!</p>
+        </div>
+
+        <p class="alert-description">
+          Thanks for completing the form. We'll be in touch soon!
+        </p>
+      </div>
+
+      <section class="card">
+        <h1 class="card-title">Contact Us</h1>
+
+        <form class="form" id="form">
+          <div class="input-group">
+            <div class="input-wrap">
+              <label for="firstname">First Name *</label>
+              <input type="text" name="firstname" id="firstname" />
+
+              <span class="text-error">This field is required</span>
+            </div>
+
+            <div class="input-wrap">
+              <label for="lastname">Last Name *</label>
+              <input type="text" name="lastname" id="lastname" />
+
+              <span class="text-error">This field is required</span>
+            </div>
+          </div>
+
+          <div class="input-wrap">
+            <label for="email">Email Address *</label>
+            <input type="email" name="email" id="email" />
+
+            <span class="text-error">This field is required</span>
+          </div>
+
+          <div>
+            <p>Query Type *</p>
+            <div class="input-group">
+              <div class="input-wrap">
+                <input
+                  type="radio"
+                  name="querytype"
+                  id="general-enquiry"
+                  value="General Enquiry"
+                />
+                <label for="general-enquiry">General Enquiry</label>
+              </div>
+
+              <div class="input-wrap">
+                <input
+                  type="radio"
+                  name="querytype"
+                  id="support-request"
+                  value="Support Request"
+                />
+                <label for="support-request">Support Request</label>
+              </div>
+            </div>
+
+            <span class="text-error">Please select a query type</span>
+          </div>
+
+          <div class="input-wrap">
+            <label for="message">Message *</label>
+            <textarea name="message" id="message"></textarea>
+
+            <span class="text-error">This field is required</span>
+          </div>
+
+          <div>
+            <div class="input-wrap">
+              <input type="checkbox" name="config" id="config" name="config" />
+              <label for="config"
+                >I consent to being contacted by the team *</label
+              >
+            </div>
+            <span class="text-error"
+              >To submit this form, please consent to being contacted</span
+            >
+          </div>
+
+          <button type="submit" id="btn-submit">Submit</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
