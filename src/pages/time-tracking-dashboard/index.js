@@ -1,70 +1,92 @@
+import { data as DATA } from './assets/data.js'
+
+const $controls = document.querySelectorAll('input[type="radio"]')
+const $card = document.querySelectorAll('time-tracking-card')
+
+$controls.forEach((el) => {
+  el.addEventListener('click', (_) => {
+    $card.forEach((card) => {
+      card.setAttribute('time', el.value)
+    })
+  })
+})
+
 class TimeTrackingCard extends HTMLElement {
   categories = {
-    work: {
-      name: 'Work',
-      icon: 'work'
-    },
-    play: {
-      name: 'Play',
-      icon: 'play',
-      style: 'play'
-    },
-    study: {
-      name: 'Study',
-      icon: 'study',
-      style: 'study'
-    },
-    exercise: {
-      name: 'Exercise',
-      icon: 'exercise',
-      style: 'exercise'
-    },
-    social: {
-      name: 'Social',
-      icon: 'social',
-      style: 'social'
-    },
-    'self-care': {
-      name: 'Self Care',
-      icon: 'self_care',
-      style: 'self-care'
-    }
+    WORK: 'work',
+    PLAY: 'play',
+    STUDY: 'study',
+    EXERCISE: 'exercise',
+    SOCIAL: 'social',
+    SELFCARE: 'selfcare'
   }
+
+  timeFrequencies = {
+    DAILY: 'daily',
+    WEEKLY: 'weekly',
+    MONTHLY: 'monthly'
+  }
+
+  data = DATA
+  time = null
+  category = null
 
   constructor() {
     super()
 
     this.category =
-      this.categories[this.getAttribute('category')] ?? this.categories.work
+      this.data[this.getAttribute('category')] ??
+      this.data[this.categories.WORK]
+
+    this.time = this.getAttribute('time') ?? this.timeFrequencies.WEEKLY
+
+    console.log(this.category)
 
     this.cstyle =
-      this.category.name != 'work' ? `card-${this.category.style}` : ''
+      this.category.slug !== this.categories.WORK
+        ? `card-${this.category.slug}`
+        : ''
+
+    this.renderCard()
+  }
+
+  static get observedAttributes() {
+    return ['time']
+  }
+
+  attributeChangedCallback(_, __, now) {
+    this.renderCard(now)
+  }
+
+  renderCard(curretnTime = this.time) {
+    const current = this.data[this.category.slug]
+    const timeframe = current.timeframes[curretnTime]
 
     this.innerHTML = /*html*/ `
         <style>
           ${TimeTrackingCard.style}
-          </style>
+        </style>
 
         <article class="card ${this.cstyle}">
-            <div class="card-content">
-                <div class="card-nav">
-                  <h4 class="card-title">${this.category.name}</h4>
-                  <button>
-                      <span class="sr-only">options</span>
-                      <svg width="21" height="5" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                              d="M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z"
-                              fill="currentColor"
-                              fill-rule="evenodd"
-                          />
-                      </svg>
-                  </button>
-                </div>
-                <div class="card-time">
-                  <h1 class="card-current-time">32hrs</h1>
-                  <p class="card-previous-time">Last Week - 36hr</p>    
-                </div>
+          <div class="card-content">
+            <div class="card-nav">
+              <h4 class="card-title">${current.title}</h4>
+              <button id="btnCard">
+                <span class="sr-only">options</span>
+                <svg width="21" height="5" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                      d="M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                  />
+                </svg>
+              </button>
             </div>
+            <div class="card-time">
+              <h1 class="card-current-time">${timeframe.current}hrs</h1>
+              <p class="card-previous-time">Last Week - ${timeframe.previous}hr</p>    
+            </div>
+          </div>
         </article>
     `
   }
@@ -184,7 +206,7 @@ class TimeTrackingCard extends HTMLElement {
               background-position-y: -18px;
             }
 
-            .card-self-care {
+            .card-selfcare {
               background-image: url(${`./assets/icon-self-care.svg`});
               background-color: var(--soft-orange-self-care);
               background-position-y: -18px;

@@ -39,15 +39,31 @@
           </div>
           <ul class="card-controls">
             <li>
-              <input type="radio" name="controls" id="control-daily" />
+              <input
+                type="radio"
+                name="controls"
+                id="control-daily"
+                value="daily"
+              />
               <label for="control-daily">Daily</label>
             </li>
             <li>
-              <input type="radio" name="controls" id="control-weekly" checked />
+              <input
+                type="radio"
+                name="controls"
+                id="control-weekly"
+                value="weekly"
+                checked
+              />
               <label for="control-weekly">Weekly</label>
             </li>
             <li>
-              <input type="radio" name="controls" id="control-monthly" />
+              <input
+                type="radio"
+                name="controls"
+                id="control-monthly"
+                value="monthly"
+              />
               <label for="control-monthly">Monthly</label>
             </li>
           </ul>
@@ -58,10 +74,10 @@
           <time-tracking-card category="study"></time-tracking-card>
           <time-tracking-card category="exercise"></time-tracking-card>
           <time-tracking-card category="social"></time-tracking-card>
-          <time-tracking-card category="self-care"></time-tracking-card>
+          <time-tracking-card category="selfcare"></time-tracking-card>
         </section>
       </div>
     </main>
-    <script src="./index.js"></script>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>
