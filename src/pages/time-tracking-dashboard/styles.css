@@ -12,6 +12,8 @@
   --dark-blue: hsl(235, 46%, 20%);
   --desaturated-blue: hsl(235, 45%, 61%);
   --pale-blue: hsl(236, 100%, 87%);
+
+  --rounded: 16px;
 }
 
 html {
@@ -23,12 +25,10 @@ body {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-
-  gap: 180px;
-  padding: 20px 14px;
-  margin-top: 120px;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 16px;
 }
 
 h1,
@@ -39,4 +39,138 @@ h5,
 h6,
 p {
   margin: 0;
+}
+
+.dashboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.tracker-container {
+  display: grid;
+  gap: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .dashboard {
+    width: auto;
+  }
+
+  .tracker-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .dashboard {
+    flex-direction: row;
+  }
+
+  .tracker-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* #####################################33 */
+
+.usercard {
+  background-color: var(--dark-blue);
+  border-radius: var(--rounded);
+  color: #fff;
+}
+
+.card-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  width: 100%;
+  padding: 32px;
+
+  background-color: var(--blue);
+  border-radius: var(--rounded);
+}
+
+.card-image {
+  --size: 60px;
+  width: var(--size);
+  height: var(--size);
+  margin: 0;
+
+  background-color: #fff;
+  border-radius: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-info img {
+  width: calc(var(--size) - 9%);
+}
+
+.card-username {
+  flex-grow: 1;
+}
+
+.card-username h2 {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.card-username p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.card-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 32px;
+  margin: 0;
+  list-style: none;
+  color: #7b80c7;
+  font-weight: 400;
+}
+
+.card-controls li input[type='radio'] {
+  display: none;
+}
+
+.card-controls li label {
+  cursor: pointer;
+}
+
+.card-controls li input[type='radio']:checked ~ label {
+  color: #fff;
+}
+
+@media screen and (min-width: 1024px) {
+  .card-info {
+    max-width: 260px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 60px;
+    height: 70%;
+  }
+
+  .card-image {
+    --size: 90px;
+  }
+
+  .card-username p {
+    font-size: 16px;
+  }
+
+  .card-username h2 {
+    font-size: 42px;
+  }
+
+  .card-controls {
+    flex-direction: column;
+    gap: 20px;
+  }
 }

@@ -26,8 +26,41 @@
   </head>
   <body>
     <main>
-      <time-tracking-card category="Work"></time-tracking-card>
-      <time-tracking-card category="Play"></time-tracking-card>
+      <div class="dashboard">
+        <section class="usercard">
+          <div class="card-info">
+            <figure class="card-image">
+              <img src="./assets/image-jeremy.png" alt="image" />
+            </figure>
+            <div class="card-username">
+              <p>Report for</p>
+              <h2>Jeremy Robson</h2>
+            </div>
+          </div>
+          <ul class="card-controls">
+            <li>
+              <input type="radio" name="controls" id="control-daily" />
+              <label for="control-daily">Daily</label>
+            </li>
+            <li>
+              <input type="radio" name="controls" id="control-weekly" checked />
+              <label for="control-weekly">Weekly</label>
+            </li>
+            <li>
+              <input type="radio" name="controls" id="control-monthly" />
+              <label for="control-monthly">Monthly</label>
+            </li>
+          </ul>
+        </section>
+        <section class="tracker-container">
+          <time-tracking-card category></time-tracking-card>
+          <time-tracking-card category="play"></time-tracking-card>
+          <time-tracking-card category="study"></time-tracking-card>
+          <time-tracking-card category="exercise"></time-tracking-card>
+          <time-tracking-card category="social"></time-tracking-card>
+          <time-tracking-card category="self-care"></time-tracking-card>
+        </section>
+      </div>
     </main>
     <script src="./index.js"></script>
   </body>
