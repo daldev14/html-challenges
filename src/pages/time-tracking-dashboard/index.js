@@ -112,13 +112,15 @@ class TimeTrackingCard extends HTMLElement {
               cursor: pointer;
               overflow: hidden;
 
+              box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+
               &:hover .card-content {
-                  background-color: #34397b;
+                background-color: #34397b;
               }
             }
 
             .card-content {
-              width: 100%;
+              width: var(--size-x);
               height: var(--size-y);
               margin-top: 50px;
               padding: 32px;
@@ -126,6 +128,11 @@ class TimeTrackingCard extends HTMLElement {
               
               color: #fff;
               background-color: hsl(235, 46%, 20%);
+              box-shadow: 0px -10px 15px -3px rgba(0,0,0,.2);
+
+              transition-property: background-color;
+              transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+              transition-duration: 300ms;
             }
 
             .card-nav {
@@ -214,8 +221,7 @@ class TimeTrackingCard extends HTMLElement {
 
             @media screen and (min-width: 768px) {
               .card {
-                --size-x: 280px;
-                --size-y: 210px;
+                --size-y: 200px;
               }
 
               .card-nav {
@@ -234,6 +240,12 @@ class TimeTrackingCard extends HTMLElement {
 
               .card-previous-time {
                 font-size: 16px;
+              }
+            }
+
+            @media screen and (min-width: 1024px) {
+              .card {
+                --size-x: 100%;
               }
             }
         }
